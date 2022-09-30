@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 189.41 308.1">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ce2105;
+        stroke: #ce2105;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        opacity: .9;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #723cdd;
+        stroke: #723cdd;
+      }
+
+      .cls-3 {
+        fill: #99075e;
+        stroke: #99075e;
+      }
+    </style>
+  </defs>
+  <g id="stem">
+    <rect class="cls-3" x=".5" y=".5" width="63.21" height="307.1"/>
+  </g>
+  <g id="circle_bottom" data-name="circle bottom">
+    <circle class="cls-2" cx="106.64" cy="225.32" r="82.27"/>
+  </g>
+  <g id="circle_top" data-name="circle top">
+    <circle class="cls-1" cx="106.64" cy="82.77" r="82.27"/>
+  </g>
+</svg>
