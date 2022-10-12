@@ -1,15 +1,19 @@
-import NavBar from './components/navigation/NavBar'
+import {NavBar} from './components/navigation/NavBar'
+import {HomePage} from './components/pages/HomePage'
+
+const splashContainerStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: 'calc(100vh - 64px)',
+  fontFamily: 'Raleway',
+}
 
 function App() {
   return (
     <div>
       <NavBar />
-      <div>
-        <div style={{width: '100px', height: '100px'}}>
-          <img src="/bloggy.svg" alt="Bloggy logo" />
-        </div>
-        <h1>Make a Blog!</h1>
-      </div>
+      <HomePage />
     </div>
   )
 }
