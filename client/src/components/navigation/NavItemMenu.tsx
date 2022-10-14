@@ -5,7 +5,7 @@ import {runIfFn} from "../../utils/runIfFn"
 
 type MaybeRenderProp<P> = React.ReactNode | ((props: P) => React.ReactNode)
 
-export interface MnueProps extends UseMenuProps {
+export interface MenuProps extends UseMenuProps {
     children: MaybeRenderProp<{
         isOpen: boolean
         onClose: () => void
