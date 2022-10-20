@@ -18,6 +18,8 @@ export const MenuButton: React.FC<MenuButtonProps> = ({buttonText}) => {
   return (
     <>
       <button
+        id="menu-button"
+        aria-expanded={isActive}
         css={MenuButtonStyles}
         onClick={() => {
           setIsActive && setIsActive(!isActive)

@@ -22,5 +22,5 @@ export const MenuList: React.FC<MenuListProps> = (props) => {
   const {isActive}: MenuContextInterface = useMenu()
   const {children} = props
 
-  return <div css={MenuListStyles(isActive)}>{children}</div>
+  return <ul css={MenuListStyles(isActive)}>{children}</ul>
 }

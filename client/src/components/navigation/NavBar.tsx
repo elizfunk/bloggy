@@ -7,6 +7,8 @@ import {MenuItem} from './MenuItem'
 const navStyles = {
   display: 'flex',
   alignItems: 'center',
+  margin: 0,
+  padding: 0,
   backgroundColor: '#f7f7f7',
   borderBottom: '1px solid #e6e6e6',
 }
@@ -23,23 +25,25 @@ const logoLinkStyles = {
 
 export const NavBar: React.FC = () => {
   return (
-    <nav css={navStyles}>
-      <a css={logoLinkStyles} href="/">
-        <img css={logoStyles} src="/bloggy.svg" alt="Bloggy logo" />
-      </a>
-      <NavItem linkHref="/about" linkText="About" />
-      <NavItem linkHref="/blog" linkText="Blog" />
-      <Menu>
-        <MenuButton buttonText="Extra" />
-        <MenuList>
-          <MenuItem
-            linkHref="http://jacksonpollockii.com"
-            linkText="Paint Like Jackson Pollock"
-          />
-          <MenuItem linkHref="https://yahoo.com" linkText="Yahoo" />
-          <MenuItem linkHref="https://pinterest.com" linkText="Pinterest" />
-        </MenuList>
-      </Menu>
+    <nav>
+      <ul css={navStyles}>
+        <a css={logoLinkStyles} href="/">
+          <img css={logoStyles} src="/bloggy.svg" alt="Bloggy logo" />
+        </a>
+        <NavItem linkHref="/about" linkText="About" />
+        <NavItem linkHref="/blog" linkText="Blog" />
+        <Menu>
+          <MenuButton buttonText="Extra" />
+          <MenuList>
+            <MenuItem
+              linkHref="http://jacksonpollockii.com"
+              linkText="Paint Like Jackson Pollock"
+            />
+            <MenuItem linkHref="https://yahoo.com" linkText="Yahoo" />
+            <MenuItem linkHref="https://pinterest.com" linkText="Pinterest" />
+          </MenuList>
+        </Menu>
+      </ul>
     </nav>
   )
 }

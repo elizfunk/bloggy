@@ -6,6 +6,7 @@ type MenuItemProps = {
 const MenuItemStyles = {
   fontFamily: 'Raleway',
   padding: '10px',
+  listStyle: 'none',
 }
 
 const MenuLinkStyles = {
@@ -14,10 +15,10 @@ const MenuLinkStyles = {
 
 export const MenuItem: React.FC<MenuItemProps> = ({linkHref, linkText}) => {
   return (
-    <div css={MenuItemStyles}>
+    <li css={MenuItemStyles}>
       <a css={MenuLinkStyles} href={linkHref}>
         {linkText}
       </a>
-    </div>
+    </li>
   )
 }

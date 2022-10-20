@@ -3,6 +3,10 @@ type Props = {
   linkText: string
 }
 
+const liStyles = {
+  listStyle: 'none',
+}
+
 const navItemStyles = {
   fontFamily: 'Raleway',
   fontSize: '1em',
@@ -16,8 +20,10 @@ export const NavItem: React.FC<Props> = ({
   linkText,
 }): React.ReactElement => {
   return (
-    <a css={navItemStyles} href={linkHref}>
-      {linkText}
-    </a>
+    <li css={liStyles}>
+      <a css={navItemStyles} href={linkHref}>
+        {linkText}
+      </a>
+    </li>
   )
 }
