@@ -1,19 +1,23 @@
 type Props = {
-    linkHref: string
-    linkText: string
+  linkHref: string
+  linkText: string
 }
 
 const navItemStyles = {
-    fontFamily: 'Raleway',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    padding: '10px',
-}  as const
+  fontFamily: 'Raleway',
+  fontSize: '1em',
+  textTransform: 'uppercase',
+  textDecoration: 'none',
+  padding: '10px',
+} as const
 
-export const NavItem = ({linkHref, linkText}: Props): React.ReactElement => {
-    return (
-     <a css={navItemStyles} href={linkHref}>{linkText}</a>
-    )
+export const NavItem: React.FC<Props> = ({
+  linkHref,
+  linkText,
+}): React.ReactElement => {
+  return (
+    <a css={navItemStyles} href={linkHref}>
+      {linkText}
+    </a>
+  )
 }
-
-

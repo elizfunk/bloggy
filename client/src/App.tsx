@@ -1,5 +1,5 @@
-import {NavBar} from './components/navigation/NavBar'
-import {HomePage} from './components/pages/HomePage'
+import { NavBar } from './components/navigation/NavBar'
+import { HomePage } from './components/pages/HomePage'
 
 const splashContainerStyles = {
   display: 'flex',
@@ -11,10 +11,10 @@ const splashContainerStyles = {
 
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
       <HomePage />
-    </div>
+    </>
   )
 }
 

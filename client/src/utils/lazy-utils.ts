@@ -1,1 +1,1 @@
-export type LazyMode = "unmount" | "keepMounted"
+export type LazyMode = 'unmount' | 'keepMounted'
