@@ -13,12 +13,12 @@ export const HomePage = () => {
   return (
     <>
       <NavBar />
-      <div css={splashContainerStyles}>
+      <main css={splashContainerStyles}>
         <div style={{width: '100px', height: '164px'}}>
           <img src="/bloggy.svg" alt="Bloggy logo" />
         </div>
         <h1>Make a Blog!</h1>
-      </div>
+      </main>
     </>
   )
 }

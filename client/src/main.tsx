@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider, Route} from 'react-router-dom'
-import App from './App'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import {AboutPage} from './components/pages/AboutPage'
 import {BlogPage} from './components/pages/BlogPage'
 import {HomePage} from './components/pages/HomePage'

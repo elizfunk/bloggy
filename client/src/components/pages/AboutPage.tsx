@@ -26,9 +26,9 @@ export const AboutPage = () => {
   return (
     <>
       <NavBar />
-      <div css={outsideWrapperStyles}>
+      <main css={outsideWrapperStyles}>
         <div css={containerStyles}>
-          <h1>ME</h1>
+          <h1>About Me</h1>
           <div css={textContainerStyles}>
             <p>
               This is some information about me. This is what I do for a living.
@@ -45,9 +45,10 @@ export const AboutPage = () => {
               information on what else can be found on this site including a few
               links.
             </p>
+            <p>Follow me on <a href="https://twitter.com/elizfunk">twitter</a>.</p>
           </div>
         </div>
-      </div>
+      </main>
     </>
   )
 }

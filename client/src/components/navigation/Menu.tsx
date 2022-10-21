@@ -34,9 +34,19 @@ export const Menu: React.FC<MenuProps> = ({children}) => {
     }
   }, [isActive])
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLUListElement>) => {
+    if (e.code === "Escape" || e.key === "Escape") {
+      setIsActive && setIsActive(!isActive)
+    }
+
+    if ((e.code === "Tab" || e.key === "Tab") && isActive) {
+      setIsActive && setIsActive(!isActive)
+    }
+  }
+
   return (
     <MenuContext.Provider value={{isActive, setIsActive}}>
-      <nav aria-labelledby="menu-button" css={MenuStyles} ref={dropdownRef}>{children}</nav>
+      <nav aria-labelledby="menu-button" css={MenuStyles} ref={dropdownRef} onKeyUp={handleKeyUp}>{children}</nav>
     </MenuContext.Provider>
   )
 }

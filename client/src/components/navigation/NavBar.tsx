@@ -38,9 +38,21 @@ export const NavBar: React.FC = () => {
             <MenuItem
               linkHref="http://jacksonpollockii.com"
               linkText="Paint Like Jackson Pollock"
+              idx={0}
+              noOfMenuItems={3}
             />
-            <MenuItem linkHref="https://yahoo.com" linkText="Yahoo" />
-            <MenuItem linkHref="https://pinterest.com" linkText="Pinterest" />
+            <MenuItem
+              linkHref="https://yahoo.com"
+              linkText="Yahoo"
+              idx={1}
+              noOfMenuItems={3}
+            />
+            <MenuItem
+              linkHref="https://pinterest.com"
+              linkText="Pinterest"
+              idx={2}
+              noOfMenuItems={3}
+            />
           </MenuList>
         </Menu>
       </ul>

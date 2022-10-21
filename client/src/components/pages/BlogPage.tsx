@@ -13,9 +13,9 @@ export const BlogPage = () => {
   return (
     <>
       <NavBar />
-      <div css={containerStyles}>
+      <main css={containerStyles}>
         <h1>THE BLOG</h1>
-      </div>
+      </main>
     </>
   )
 }

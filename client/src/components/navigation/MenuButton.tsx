@@ -23,6 +23,10 @@ export const MenuButton: React.FC<MenuButtonProps> = ({buttonText}) => {
         css={MenuButtonStyles}
         onClick={() => {
           setIsActive && setIsActive(!isActive)
+          const firstEl = document.getElementById("submenu-0")
+          setTimeout(() => {
+            firstEl && firstEl.focus()
+          }, 0)
         }}
       >
         {buttonText}
