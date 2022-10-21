@@ -46,7 +46,14 @@ export const Menu: React.FC<MenuProps> = ({children}) => {
 
   return (
     <MenuContext.Provider value={{isActive, setIsActive}}>
-      <nav aria-labelledby="menu-button" css={MenuStyles} ref={dropdownRef} onKeyUp={handleKeyUp}>{children}</nav>
+      <nav
+        aria-labelledby="menu-button"
+        css={MenuStyles}
+        ref={dropdownRef}
+        onKeyUp={handleKeyUp}
+      >
+        {children}
+      </nav>
     </MenuContext.Provider>
   )
 }
