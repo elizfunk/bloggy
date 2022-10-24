@@ -1,3 +1,5 @@
+import {CSSObject} from '@emotion/react'
+
 type MenuItemProps = {
   linkHref: string
   linkText: string
@@ -5,20 +7,23 @@ type MenuItemProps = {
   noOfMenuItems: number
 }
 
-const MenuItemStyles = {
+const MenuItemStyles: CSSObject = {
   fontFamily: 'Raleway',
   padding: '10px',
   listStyle: 'none',
+  ['&:hover']: {
+    backgroundColor: '#e7e7e7',
+  },
 }
 
-const MenuLinkStyles = {
+const MenuLinkStyles: CSSObject = {
   textDecoration: 'none',
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({linkHref, linkText, idx, noOfMenuItems}) => {
   const handleKeyUp = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
     const elIdx = (e.target as HTMLAnchorElement).id.split('-')[1]
-    if (e.code === "ArrowDown" || e.key === "ArrowDown") {
+    if (e.code === 'ArrowDown' || e.key === 'ArrowDown') {
       if (idx < noOfMenuItems - 1) {
         const nextEl = document.getElementById(`submenu-${idx + 1}`)
         setTimeout(() => {
@@ -32,7 +37,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({linkHref, linkText, idx, noOf
       }
     }
 
-    if (e.code === "ArrowUp" || e.key === "ArrowUp") {
+    if (e.code === 'ArrowUp' || e.key === 'ArrowUp') {
       if (idx >= 1) {
         const prevEl = document.getElementById(`submenu-${idx - 1}`)
         setTimeout(() => {

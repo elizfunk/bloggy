@@ -1,13 +1,19 @@
+import {CSSObject} from '@emotion/react'
+
 type Props = {
   linkHref: string
   linkText: string
 }
 
-const liStyles = {
+const LiStyles: CSSObject = {
   listStyle: 'none',
+  padding: '10px 0',
+  ['&:hover']: {
+    backgroundColor: '#e7e7e7',
+  },
 }
 
-const navItemStyles = {
+const NavItemStyles: CSSObject = {
   fontFamily: 'Raleway',
   fontSize: '1em',
   textTransform: 'uppercase',
@@ -20,8 +26,8 @@ export const NavItem: React.FC<Props> = ({
   linkText,
 }): React.ReactElement => {
   return (
-    <li css={liStyles}>
-      <a css={navItemStyles} href={linkHref}>
+    <li css={LiStyles}>
+      <a css={NavItemStyles} href={linkHref}>
         {linkText}
       </a>
     </li>
