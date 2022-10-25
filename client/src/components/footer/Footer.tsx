@@ -1,5 +1,5 @@
 import {CSSObject} from '@emotion/react'
-import {BsGithub, BsTwitter} from 'react-icons/bs'
+import {BsGithub, BsLinkedin, BsTwitter} from 'react-icons/bs'
 
 const FooterStyles: CSSObject = {
   height: '60px',
@@ -13,6 +13,10 @@ const LinkStyles: CSSObject = {
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none',
+  marginRight: '30px',
+  [':last-child']: {
+    marginRight: 0,
+  },
 }
 
 const TextStyles: CSSObject = {
@@ -29,6 +33,10 @@ export const Footer = () => {
       <a css={LinkStyles} href="https://twitter.com/elizfunk">
         <div css={TextStyles}>@elizfunk</div>
         <BsTwitter aria-hidden="true" />
+      </a>
+      <a css={FooterStyles} href="https://www.linkedin.com/in/funkelizabeth/">
+        <div css={TextStyles}>in/funkelizabeth</div>
+        <BsLinkedin aria-hidden="true" />
       </a>
     </footer>
   )

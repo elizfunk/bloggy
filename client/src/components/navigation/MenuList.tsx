@@ -18,9 +18,8 @@ const MenuListStyles = (isActive: IsActive) =>
   boxShadow: '0 1px 1px rgba(0, 0, 0, 0.10)',
 } as const)
 
-export const MenuList: React.FC<MenuListProps> = (props) => {
+export const MenuList: React.FC<MenuListProps> = ({children}) => {
   const {isActive}: MenuContextInterface = useMenu()
-  const {children} = props
 
   return <ul css={MenuListStyles(isActive)}>{children}</ul>
 }

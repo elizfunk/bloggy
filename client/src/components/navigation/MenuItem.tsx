@@ -12,7 +12,7 @@ const MenuItemStyles: CSSObject = {
   padding: '10px',
   listStyle: 'none',
   ['&:hover']: {
-    backgroundColor: '#e7e7e7',
+    backgroundColor: '#f7f7f7',
   },
 }
 
