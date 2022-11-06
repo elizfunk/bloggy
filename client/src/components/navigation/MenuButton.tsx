@@ -1,10 +1,10 @@
 import {CSSObject} from '@emotion/react'
 import {BsChevronDown} from 'react-icons/bs'
 
-import {MenuContextInterface, useMenu} from './useMenu'
-
 type MenuButtonProps = {
   buttonText: string
+  handleClick: () => void
+  isActive: boolean
 }
 
 const MenuButtonStyles: CSSObject = {
@@ -21,8 +21,7 @@ const IconStyles: CSSObject = {
   marginLeft: '10px',
 }
 
-export const MenuButton: React.FC<MenuButtonProps> = ({buttonText}) => {
-  const {isActive, setIsActive}: MenuContextInterface = useMenu()
+export const MenuButton: React.FC<MenuButtonProps> = ({buttonText, handleClick, isActive}) => {
   return (
     <>
       <button
@@ -31,13 +30,7 @@ export const MenuButton: React.FC<MenuButtonProps> = ({buttonText}) => {
         aria-haspopup="menu"
         aria-expanded={isActive}
         css={MenuButtonStyles}
-        onClick={() => {
-          setIsActive && setIsActive(!isActive)
-          const firstEl = document.getElementById('submenu-0')
-          setTimeout(() => {
-            firstEl && firstEl.focus()
-          }, 0)
-        }}
+        onClick={handleClick}
       >
         <div>{buttonText}</div>
         <div aria-hidden css={IconStyles}>

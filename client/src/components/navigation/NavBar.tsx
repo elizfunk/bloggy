@@ -1,10 +1,9 @@
+import {CSSObject} from '@emotion/react'
+
 import {NavItem} from './NavItem'
 import {Menu} from './Menu'
-import {MenuButton} from './MenuButton'
-import {MenuList} from './MenuList'
-import {MenuItem} from './MenuItem'
 
-const NavStyles = {
+export const NavStyles: CSSObject = {
   height: '64px',
   display: 'flex',
   alignItems: 'center',
@@ -14,16 +13,31 @@ const NavStyles = {
   borderBottom: '1px solid #e6e6e6',
 }
 
-const LogoStyles = {
+export const LogoStyles: CSSObject = {
   width: '50px',
   height: '50px',
   padding: '12px 14px',
   marginLeft: '20px'
 }
 
-const LogoLinkStyles = {
+export const LogoLinkStyles: CSSObject = {
   display: 'flex',
 }
+
+const funMenuItems = [
+  {
+    linkHref: 'http://jacksonpollockii.com',
+    linkText: 'Paint Like Jackson Pollock',
+  },
+  {
+    linkHref: 'https://yahoo.com',
+    linkText: 'Yahoo',
+  },
+  {
+    linkHref: 'https://pinterest.com',
+    linkText: 'Pinterest',
+  }
+]
 
 export const NavBar: React.FC = () => {
   return (
@@ -34,29 +48,10 @@ export const NavBar: React.FC = () => {
         </a>
         <NavItem linkHref='/about' linkText='About' />
         <NavItem linkHref='/blog' linkText='Blog' />
-        <Menu>
-          <MenuButton buttonText='Extra' />
-          <MenuList>
-            <MenuItem
-              linkHref='http://jacksonpollockii.com'
-              linkText='Paint Like Jackson Pollock'
-              idx={0}
-              noOfMenuItems={3}
-            />
-            <MenuItem
-              linkHref='https://yahoo.com'
-              linkText='Yahoo'
-              idx={1}
-              noOfMenuItems={3}
-            />
-            <MenuItem
-              linkHref='https://pinterest.com'
-              linkText='Pinterest'
-              idx={2}
-              noOfMenuItems={3}
-            />
-          </MenuList>
-        </Menu>
+        <Menu
+          buttonText='Fun'
+          menuItems={funMenuItems}
+        />
       </ul>
     </nav>
   )

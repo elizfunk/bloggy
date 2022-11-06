@@ -1,12 +1,14 @@
+import {CSSObject} from '@emotion/react'
+
 import {FOOTER_HEIGHT, NAV_HEIGHT, PageWrapperBlog} from './PageWrapperBlog'
 
-const OutsideWrapperStyles = {
+const OutsideWrapperStyles: CSSObject = {
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
 }
 
-const ContainerStyles = {
+const ContainerStyles: CSSObject = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -14,13 +16,13 @@ const ContainerStyles = {
   maxWidth: '700px',
   fontFamily: 'Raleway',
   padding: '36px',
-} as const
+}
 
-const TextContainerStyles = {
+const TextContainerStyles: CSSObject = {
   display: 'flex',
   alignItems: 'flex-start',
   flexDirection: 'column',
-} as const
+}
 
 export const AboutPage = () => {
   return (

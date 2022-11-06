@@ -4,6 +4,9 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import {AboutPage} from './components/pages/AboutPage'
 import {BlogPage} from './components/pages/BlogPage'
 import {HomePage} from './components/pages/HomePage'
+import {BlogPostsPage} from './components/pagesDashboard/BlogPostsPage'
+import {BlogPostEditorPage} from './components/pagesDashboard/BlogPostEditorPage'
+import BlogPostEditorPageRT from './components/pagesDashboard/BlogPostEditorPageRT'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,22 @@ const router = createBrowserRouter([
   {
     path: '/blog',
     element: <BlogPage />,
+  },
+  {
+    path: '/dashboard',
+    element: <BlogPostsPage />,
+  },
+  {
+    path: '/dashboard/posts',
+    element: <BlogPostsPage />,
+  },
+  {
+    path: '/dashboard/edit-post',
+    element: <BlogPostEditorPage />,
+  },
+  {
+    path: '/dashboard/edit-post-rt',
+    element: <BlogPostEditorPageRT />,
   },
 ])
 

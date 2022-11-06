@@ -19,7 +19,7 @@ const NavItemStyles: CSSObject = {
   textTransform: 'uppercase',
   textDecoration: 'none',
   padding: '10px',
-} as const
+}
 
 export const NavItem: React.FC<Props> = ({
   linkHref,
