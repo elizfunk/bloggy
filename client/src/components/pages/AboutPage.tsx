@@ -33,21 +33,24 @@ export const AboutPage = () => {
             <h1>About Me</h1>
             <div css={TextContainerStyles}>
               <p>
-                This is some information about me. This is what I do for a living.
-                This is where I worked in the past.
+                This is some information about me. This is what I do for a
+                living. This is where I worked in the past.
               </p>
               <p>
-                These are some of my hobbies and interests. This is where I live.
+                These are some of my hobbies and interests. This is where I
+                live.
               </p>
               <p>
                 These are some things that I care about and think are important.
               </p>
               <p>
                 This is an explanation about my blog and its purpose. This is
-                information on what else can be found on this site including a few
-                links.
+                information on what else can be found on this site including a
+                few links.
               </p>
-              <p>Follow me on <a href='https://twitter.com/elizfunk'>twitter</a>.</p>
+              <p>
+                Follow me on <a href='https://twitter.com/elizfunk'>twitter</a>.
+              </p>
             </div>
           </div>
         </main>

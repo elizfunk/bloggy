@@ -1,4 +1,6 @@
-export const delayAndFocus = (elementToReceiveFocus: HTMLElement | null): void => {
+export const delayAndFocus = (
+  elementToReceiveFocus: HTMLElement | null,
+): void => {
   window.requestAnimationFrame(() => {
     elementToReceiveFocus && elementToReceiveFocus.focus()
   })

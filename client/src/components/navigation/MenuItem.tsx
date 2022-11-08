@@ -23,11 +23,7 @@ const MenuLinkStyles: CSSObject = {
 export const MenuItem: React.FC<MenuItemProps> = ({id, linkHref, linkText}) => {
   return (
     <li css={MenuItemStyles}>
-      <a
-        id={id}
-        css={MenuLinkStyles}
-        href={linkHref}
-      >
+      <a id={id} css={MenuLinkStyles} href={linkHref}>
         {linkText}
       </a>
     </li>

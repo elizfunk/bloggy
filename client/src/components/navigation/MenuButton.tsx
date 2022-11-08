@@ -21,13 +21,17 @@ const IconStyles: CSSObject = {
   marginLeft: '10px',
 }
 
-export const MenuButton: React.FC<MenuButtonProps> = ({buttonText, handleClick, isActive}) => {
+export const MenuButton: React.FC<MenuButtonProps> = ({
+  buttonText,
+  handleClick,
+  isActive,
+}) => {
   return (
     <>
       <button
-        id="menu-button"
-        role="button"
-        aria-haspopup="menu"
+        id='menu-button'
+        role='button'
+        aria-haspopup='menu'
         aria-expanded={isActive}
         css={MenuButtonStyles}
         onClick={handleClick}

@@ -28,13 +28,13 @@ export default function BlogPostEditorPageRT() {
           <h1>Title</h1>
           <Editor />
           <div css={ButtonWrapper}>
-              <Button
-                buttonText='Save Changes'
-                buttonType='Action'
-                handleClick={
-                  () => {console.log('clicked Save Changes')}
-                }
-              />
+            <Button
+              buttonText='Save Changes'
+              buttonType='Action'
+              handleClick={() => {
+                console.log('clicked Save Changes')
+              }}
+            />
           </div>
         </div>
       </div>

@@ -19,8 +19,7 @@ const MenuStyles: CSSObject = {
   position: 'relative',
 }
 
-const MenuListStyles = (isActive: boolean): CSSObject =>
-({
+const MenuListStyles = (isActive: boolean): CSSObject => ({
   display: `${isActive ? 'block' : 'none'}`,
   position: 'absolute',
   top: '40px',
@@ -50,7 +49,10 @@ export const Menu: React.FC<MenuProps> = ({buttonText, menuItems}) => {
 
   useEffect(() => {
     const pageClickEvent = (e: MouseEvent): void => {
-      if (dropdownRef.current !== null && !dropdownRef?.current?.contains(e.target as Node)) {
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef?.current?.contains(e.target as Node)
+      ) {
         setIsActive && setIsActive(!isActive)
       }
     }
@@ -64,14 +66,11 @@ export const Menu: React.FC<MenuProps> = ({buttonText, menuItems}) => {
     }
   }, [isActive])
 
-  const handleMenuButtonClick = React.useCallback(
-    () => {
-      setIsActive && setIsActive(!isActive)
-      const firstEl = document.getElementById('submenu-0')
-      delayAndFocus(firstEl)
-    },
-    [isActive, setIsActive]
-  )
+  const handleMenuButtonClick = React.useCallback(() => {
+    setIsActive && setIsActive(!isActive)
+    const firstEl = document.getElementById('submenu-0')
+    delayAndFocus(firstEl)
+  }, [isActive, setIsActive])
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>) => {
@@ -91,7 +90,10 @@ export const Menu: React.FC<MenuProps> = ({buttonText, menuItems}) => {
         }
       }
 
-      if (isActive && (e.target as HTMLAnchorElement).id.split('-')[0] === 'submenu') {
+      if (
+        isActive &&
+        (e.target as HTMLAnchorElement).id.split('-')[0] === 'submenu'
+      ) {
         const elIdx = Number((e.target as HTMLAnchorElement).id.split('-')[1])
         const noOfMenuItems = menuItems.length
 
@@ -110,29 +112,38 @@ export const Menu: React.FC<MenuProps> = ({buttonText, menuItems}) => {
             const prevEl = document.getElementById(`submenu-${elIdx - 1}`)
             delayAndFocus(prevEl)
           } else {
-            const lastEl = document.getElementById(`submenu-${noOfMenuItems - 1}`)
+            const lastEl = document.getElementById(
+              `submenu-${noOfMenuItems - 1}`,
+            )
             delayAndFocus(lastEl)
           }
         }
       }
     },
-    [isActive, setIsActive]
+    [isActive, setIsActive],
   )
 
   return (
     <nav
-      aria-labelledby="menu-button"
+      aria-labelledby='menu-button'
       css={MenuStyles}
       ref={dropdownRef}
       onKeyDown={handleKeyDown}
     >
-      <MenuButton buttonText={buttonText} handleClick={handleMenuButtonClick} isActive={isActive} />
+      <MenuButton
+        buttonText={buttonText}
+        handleClick={handleMenuButtonClick}
+        isActive={isActive}
+      />
       <ul css={MenuListStyles(isActive)}>
-        {
-          menuItems.map((item, idx) => (
-            <MenuItem key={`submenu-${idx}`} id={`submenu-${idx}`} linkHref={item.linkHref} linkText={item.linkText} />
-          ))
-        }
+        {menuItems.map((item, idx) => (
+          <MenuItem
+            key={`submenu-${idx}`}
+            id={`submenu-${idx}`}
+            linkHref={item.linkHref}
+            linkText={item.linkText}
+          />
+        ))}
       </ul>
     </nav>
   )

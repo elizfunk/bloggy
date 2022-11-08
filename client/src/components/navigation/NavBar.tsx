@@ -17,7 +17,7 @@ export const LogoStyles: CSSObject = {
   width: '50px',
   height: '50px',
   padding: '12px 14px',
-  marginLeft: '20px'
+  marginLeft: '20px',
 }
 
 export const LogoLinkStyles: CSSObject = {
@@ -36,7 +36,7 @@ const funMenuItems = [
   {
     linkHref: 'https://pinterest.com',
     linkText: 'Pinterest',
-  }
+  },
 ]
 
 export const NavBar: React.FC = () => {
@@ -48,10 +48,7 @@ export const NavBar: React.FC = () => {
         </a>
         <NavItem linkHref='/about' linkText='About' />
         <NavItem linkHref='/blog' linkText='Blog' />
-        <Menu
-          buttonText='Fun'
-          menuItems={funMenuItems}
-        />
+        <Menu buttonText='Fun' menuItems={funMenuItems} />
       </ul>
     </nav>
   )

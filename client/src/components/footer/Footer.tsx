@@ -27,16 +27,20 @@ const LinkStyles: CSSObject = {
 
 const TextStyles: CSSObject = {
   marginRight: '10px',
-  ["@media (max-width: 700px)"]: {
+  ['@media (max-width: 700px)']: {
     display: 'none',
   },
 }
 
-const FooterLink: React.FC<FooterLinkProps> = ({linkIcon, linkHref, linkText}) => {
+const FooterLink: React.FC<FooterLinkProps> = ({
+  linkIcon,
+  linkHref,
+  linkText,
+}) => {
   return (
     <a css={LinkStyles} href={linkHref}>
       <div css={TextStyles}>{linkText}</div>
-      {linkIcon && (linkIcon)}
+      {linkIcon && linkIcon}
     </a>
   )
 }
@@ -45,17 +49,17 @@ export const Footer = () => {
   return (
     <footer css={FooterStyles}>
       <FooterLink
-        linkIcon={<BsGithub aria-hidden="true" />}
+        linkIcon={<BsGithub aria-hidden='true' />}
         linkHref='https://github.com/elizfunk'
         linkText='elizfunk'
       />
       <FooterLink
-        linkIcon={<BsTwitter aria-hidden="true" />}
+        linkIcon={<BsTwitter aria-hidden='true' />}
         linkHref='https://twitter.com/elizfunk'
         linkText='@elizfunk'
       />
       <FooterLink
-        linkIcon={<BsLinkedin aria-hidden="true" />}
+        linkIcon={<BsLinkedin aria-hidden='true' />}
         linkHref='https://www.linkedin.com/in/funkelizabeth/'
         linkText='in/funkelizabeth'
       />

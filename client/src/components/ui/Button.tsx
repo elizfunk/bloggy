@@ -14,14 +14,20 @@ const ButtonStyles = (buttonType: string): CSSObject => ({
   width: 'fit-content',
   padding: '14px 20px',
   cursor: 'pointer',
-  color:  `${buttonType === 'Action' ? 'white' : 'black'}`,
-  border:  `${buttonType === 'Action' ? 'none' : '1px solid black'}`,
+  color: `${buttonType === 'Action' ? 'white' : 'black'}`,
+  border: `${buttonType === 'Action' ? 'none' : '1px solid black'}`,
   backgroundColor: `${buttonType === 'Action' ? 'green' : 'none'}`,
   borderRadius: '4px',
 })
 
-export const Button: React.FC<Props> = ({buttonText, buttonType, handleClick}) => {
+export const Button: React.FC<Props> = ({
+  buttonText,
+  buttonType,
+  handleClick,
+}) => {
   return (
-    <div css={ButtonStyles(buttonType)} onClick={handleClick}>{buttonText}</div>
+    <div css={ButtonStyles(buttonType)} onClick={handleClick}>
+      {buttonText}
+    </div>
   )
 }

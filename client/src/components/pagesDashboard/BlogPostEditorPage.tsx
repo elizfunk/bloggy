@@ -28,10 +28,10 @@ const ContainerStyles: CSSObject = {
   fontFamily: 'Raleway',
   padding: '36px',
   border: '1px solid #e6e6e6',
-  ["@media (min-width: 701px)"]: {
+  ['@media (min-width: 701px)']: {
     minWidth: '700px',
   },
-  ["@media (max-width: 700px)"]: {
+  ['@media (max-width: 700px)']: {
     width: '100%',
   },
 }
@@ -67,10 +67,8 @@ function onChange(editorState: EditorState) {
 
     console.log({root, selection})
 
-    console.log("getTextContent:", root.getTextContent())
-    console.log("getAllTextNodes:", root.getAllTextNodes())
-
-
+    console.log('getTextContent:', root.getTextContent())
+    console.log('getAllTextNodes:', root.getAllTextNodes())
   })
 }
 
@@ -97,14 +95,12 @@ function onError(error: Error) {
 }
 
 const Placeholder: React.FC = () => {
-  return (
-    <div css={PlaceholderStyles}>Enter some text...</div>
-  )
+  return <div css={PlaceholderStyles}>Enter some text...</div>
 }
 
 function Editor() {
   const initialConfig = {
-    namespace: 'MyEditor', 
+    namespace: 'MyEditor',
     theme,
     onError,
   }
