@@ -1,5 +1,5 @@
-import {CSSObject} from '@emotion/react'
 import React, {useEffect, useRef, useState} from 'react'
+import {CSSObject} from '@emotion/react'
 
 import {MenuButton} from './MenuButton'
 import {MenuItem} from './MenuItem'

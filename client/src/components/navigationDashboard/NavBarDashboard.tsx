@@ -18,7 +18,7 @@ export const NavBarDashboard: React.FC = () => {
         <a css={LogoLinkStyles} href='/'>
           <img css={LogoStyles} src='/bloggy.svg' alt='Bloggy logo' />
         </a>
-        <NavItem linkHref='/dashboard/blog-posts' linkText='Blog Posts' />
+        <NavItem linkHref='/dashboard/posts' linkText='Blog Posts' />
         <NavItem linkHref='/dashboard/edit-post' linkText='New Post' />
         <div css={LogoutStyles}>Logout</div>
       </ul>
