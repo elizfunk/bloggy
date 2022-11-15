@@ -12,7 +12,7 @@ module.exports = (app) => {
       req.session.user = {
         id: username,
       }
-      res.send('Good to go!')
+      res.send({isAdmin: true})
     } else {
       res.status(403).send('Nope.  You are not allowed.')
     }

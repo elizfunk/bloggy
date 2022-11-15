@@ -2,12 +2,25 @@ import {createContext, useReducer} from 'react'
 
 import {adminReducer, initialState} from '../reducers/reducer'
 
-export const AdminUserContext = createContext({
+type State = {
+  isAdmin: boolean
+}
+
+export type AdminUserContextValues = {
+  state: State
+  dispatch: React.Dispatch<any>
+}
+
+export const AdminUserContext = createContext<AdminUserContextValues>({
   state: initialState,
   dispatch: () => null,
 })
 
-export const AdminUserProvider = ({children}) => {
+type Props = {
+  children: JSX.Element[] | JSX.Element
+}
+
+export const AdminUserProvider = ({children}: Props) => {
   const [state, dispatch] = useReducer(adminReducer, initialState)
 
   return (

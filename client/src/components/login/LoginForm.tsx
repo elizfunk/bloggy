@@ -1,8 +1,9 @@
-import {MouseEventHandler, useState} from 'react'
+import {MouseEventHandler, useContext, useState} from 'react'
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
 
 import {Button} from '../ui/Button'
+import {AdminUserContextValues} from '../../contexts/AdminUserContext'
 
 const PageStyles: CSSObject = {
   display: 'flex',
@@ -30,11 +31,22 @@ const ButtonStyles: CSSObject = {
   marginTop: '24px',
 }
 
-export const Login = () => {
+type Props = {
+  adminUserContext: AdminUserContextValues
+}
+
+export const Login = ({adminUserContext}: Props) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [isCapsLock, setIsCapsLock] = useState<boolean>(false)
+  const {state, dispatch} = adminUserContext
 
-  const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined) // change eventually to use global state, e.g., Redux
+  // const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined) // change eventually to use global state, e.g., Redux
+
+  // dispatch(state, {
+  //   type: 'AUTHENTICATE_ADMIN',
+  //   payload: {isAdmin: true},
+  // })
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()
@@ -45,6 +57,16 @@ export const Login = () => {
         username,
       },
     })
+
+    const isAdmin = res.data.isAdmin
+    console.log('isAdmin, typeof isAdmin:', isAdmin, typeof isAdmin)
+
+    if (isAdmin) {
+      dispatch({
+        type: 'AUTHENTICATE_ADMIN',
+        payload: {isAdmin},
+      })
+    }
     console.log('res:::::::', res)
   }
 
@@ -77,6 +99,12 @@ export const Login = () => {
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            onKeyDown={(event) =>
+              console.log(
+                "event.getModifierState('CapsLock')",
+                event.getModifierState('CapsLock'),
+              )
+            }
           />
         </div>
         <Button
