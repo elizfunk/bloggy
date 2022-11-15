@@ -1,7 +1,11 @@
+import {useContext} from 'react'
+
 import {CSSObject} from '@emotion/react'
 
 import Editor from '../editor/Editor'
 import {PageWrapperDashboard} from './PageWrapperDashboard'
+import {Login} from '../login/LoginForm'
+import {AdminUserContext} from '../../contexts/AdminUserContext'
 import {Button} from '../ui/Button'
 
 const OutsideWrapperStyles: CSSObject = {
@@ -21,6 +25,14 @@ const ButtonWrapper: CSSObject = {
 }
 
 export const BlogPostEditorPage = () => {
+  const {state} = useContext(AdminUserContext)
+
+  console.log('editor page state:', state)
+
+  if (!state.isAdmin) {
+    return <Login />
+  }
+
   return (
     <PageWrapperDashboard>
       <div css={OutsideWrapperStyles}>

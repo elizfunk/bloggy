@@ -9,7 +9,7 @@ export const BlogPostsPage: React.FC = () => {
   console.log('BlogPostsPage -- isAdmin:', state.isAdmin)
 
   if (!state.isAdmin) {
-    return <Login adminUserContext={{state, dispatch}} />
+    return <Login />
   }
 
   return (

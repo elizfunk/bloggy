@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import {CSSObject} from '@emotion/react'
 
 type Props = {
@@ -27,9 +28,9 @@ export const NavItem: React.FC<Props> = ({
 }): React.ReactElement => {
   return (
     <li css={LiStyles}>
-      <a css={NavItemStyles} href={linkHref}>
+      <Link css={NavItemStyles} to={linkHref}>
         {linkText}
-      </a>
+      </Link>
     </li>
   )
 }

@@ -3,7 +3,7 @@ import {CSSObject} from '@emotion/react'
 import axios from 'axios'
 
 import {Button} from '../ui/Button'
-import {AdminUserContextValues} from '../../contexts/AdminUserContext'
+import {AdminUserContext} from '../../contexts/AdminUserContext'
 
 const PageStyles: CSSObject = {
   display: 'flex',
@@ -31,22 +31,11 @@ const ButtonStyles: CSSObject = {
   marginTop: '24px',
 }
 
-type Props = {
-  adminUserContext: AdminUserContextValues
-}
-
-export const Login = ({adminUserContext}: Props) => {
+export const Login = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [isCapsLock, setIsCapsLock] = useState<boolean>(false)
-  const {state, dispatch} = adminUserContext
-
-  // const [loggedIn, setLoggedIn] = useState<boolean | undefined>(undefined) // change eventually to use global state, e.g., Redux
-
-  // dispatch(state, {
-  //   type: 'AUTHENTICATE_ADMIN',
-  //   payload: {isAdmin: true},
-  // })
+  const {state, dispatch} = useContext(AdminUserContext)
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()

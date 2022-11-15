@@ -2,7 +2,7 @@ import {NavBar} from '../navigation/NavBar'
 import {Footer} from '../footer/Footer'
 
 export const NAV_HEIGHT = 64
-export const FOOTER_HEIGHT = 60
+export const FOOTER_HEIGHT = 80
 
 type Props = {
   children: JSX.Element[] | JSX.Element
