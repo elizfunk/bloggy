@@ -1,7 +1,8 @@
 import {MouseEventHandler, useContext, useState} from 'react'
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
-import {BsCapslockFill} from 'react-icons/bs'
+import {BsCapslock} from 'react-icons/bs'
+import {BiErrorCircle} from 'react-icons/bi'
 
 import {Button} from '../ui/Button'
 import {AdminUserContext} from '../../contexts/AdminUserContext'
@@ -13,6 +14,14 @@ const PageStyles: CSSObject = {
   width: '100vw',
   height: '60vh',
   fontFamily: 'Raleway',
+}
+
+const LoginErrorStyles: CSSObject = {
+  color: 'darkred',
+  height: '52px',
+  width: '350px',
+  marginBottom: '34px',
+  fontWeight: 'bold',
 }
 
 const InputWrapperStyles: CSSObject = {
@@ -42,36 +51,57 @@ export const Login = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [isCapsLock, setIsCapsLock] = useState<boolean>(false)
+  const [isLoginError, setIsLoginError] = useState<boolean>(false)
   const {dispatch} = useContext(AdminUserContext)
 
   console.dir(document)
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()
-    const res = await axios.post('/api/login', {
-      data: {
-        password,
-        username,
-      },
-    })
 
-    console.log('res:', res)
-
-    const isAdmin = res.data.isAdmin
-
-    if (isAdmin) {
-      dispatch({
-        type: 'AUTHENTICATE_ADMIN',
-        payload: {isAdmin},
+    try {
+      const res = await axios.post('/api/login', {
+        data: {
+          password,
+          username,
+        },
       })
+
+      const isAdmin = res.data.isAdmin
+
+      if (isAdmin) {
+        setIsLoginError(false)
+        dispatch({
+          type: 'AUTHENTICATE_ADMIN',
+          payload: {isAdmin},
+        })
+      } else {
+        setIsLoginError(true)
+      }
+    } catch (error) {
+      console.log('error:', error)
+      setIsLoginError(true)
     }
+
+    // status code === 403 || data returns Nope setIsForbidden
+    // error.code: 'ERR_BAD_REQUEST'
+    // error.message: 'Request failed with status code 403
+    // error.response.data: Nope.  You are not allowed.'
   }
 
   return (
     <div css={PageStyles}>
       <form>
+        <div css={LoginErrorStyles} role='alert'>
+          {isLoginError && (
+            <span>
+              The username or password you entered is incorrect. Please try
+              again. <BiErrorCircle aria-hidden='true' />
+            </span>
+          )}
+        </div>
         <div css={InputWrapperStyles}>
-          <label css={InputStyles} htmlFor='username' aria-hidden='true'>
+          <label css={InputStyles} htmlFor='username'>
             Username
           </label>
           <input
@@ -79,13 +109,12 @@ export const Login = () => {
             type='text'
             name='username'
             id='username'
-            placeholder='Enter Username'
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
         <div css={InputWrapperStyles}>
-          <label css={InputStyles} htmlFor='password' aria-hidden='true'>
+          <label css={InputStyles} htmlFor='password'>
             Password
           </label>
           <input
@@ -93,7 +122,6 @@ export const Login = () => {
             type='password'
             name='password'
             id='password'
-            placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             onKeyDown={(event) => {
@@ -106,7 +134,7 @@ export const Login = () => {
           {isCapsLock && (
             <span>
               Oops! It looks like Caps Lock is on.{' '}
-              <BsCapslockFill aria-hidden='true' />
+              <BsCapslock aria-hidden='true' />
             </span>
           )}
         </div>
