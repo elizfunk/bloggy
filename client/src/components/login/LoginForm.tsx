@@ -85,7 +85,7 @@ export const Login = () => {
           />
         </div>
         <div css={InputWrapperStyles}>
-          <label css={InputStyles} htmlFor='password' aria-hidden='true'>
+          <label css={InputStyles} htmlFor='password'>
             Password
           </label>
           <input
@@ -102,11 +102,10 @@ export const Login = () => {
             }}
           />
         </div>
-        <div css={CapsLockStyles} role='alert'>
+        <div css={CapsLockStyles}>
           {isCapsLock && (
             <span>
-              Oops! It looks like Caps Lock is on.{' '}
-              <BsCapslockFill aria-hidden='true' />
+              Oops! It looks like Caps Lock is on. <BsCapslockFill />
             </span>
           )}
         </div>
