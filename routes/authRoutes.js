@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.post('/api/login', (req, res) => {
     const username = req.body.data.username
     const password = req.body.data.password
-
+    console.log('req for login:', req)
     if (
       username === keys.dashboardAdminUsername &&
       password === keys.dashboardAdminPassword

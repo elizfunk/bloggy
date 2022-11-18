@@ -28,6 +28,7 @@ export const BlogPostEditorPage = () => {
   const {state} = useContext(AdminUserContext)
 
   console.log('editor page state:', state)
+  console.dir(document)
 
   if (!state.isAdmin) {
     return <Login />

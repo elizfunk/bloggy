@@ -44,6 +44,8 @@ export const Login = () => {
   const [isCapsLock, setIsCapsLock] = useState<boolean>(false)
   const {dispatch} = useContext(AdminUserContext)
 
+  console.dir(document)
+
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()
     const res = await axios.post('/api/login', {
@@ -52,6 +54,8 @@ export const Login = () => {
         username,
       },
     })
+
+    console.log('res:', res)
 
     const isAdmin = res.data.isAdmin
 
