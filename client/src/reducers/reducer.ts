@@ -1,8 +1,16 @@
-export const adminReducer = (state, action) => {
+import {State} from '../contexts/AdminUserContext'
+
+type Action = {
+  type: 'AUTHENTICATE_ADMIN' | 'LOGOUT_ADMIN'
+  payload: State
+}
+
+export const adminReducer = (state: State, action: Action) => {
   switch (action.type) {
     case 'AUTHENTICATE_ADMIN':
-      // assign value from payload to state???
-      return action.payload || false
+      return action.payload || {isAdmin: false}
+    case 'LOGOUT_ADMIN':
+      return {isAdmin: false}
 
     default:
       return state

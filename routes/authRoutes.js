@@ -9,8 +9,11 @@ module.exports = (app) => {
       username === keys.dashboardAdminUsername &&
       password === keys.dashboardAdminPassword
     ) {
-      req.session.user = {
-        id: username,
+      req.session = null
+      req.session = {
+        user: {
+          id: username,
+        },
       }
       res.send({isAdmin: true})
     } else {
@@ -19,8 +22,9 @@ module.exports = (app) => {
   })
 
   app.get('/api/logout', (req, res) => {
-    console.log('req LOGOUT ::::::::::', req)
-    // session.regenerate()
-    res.send('logged out')
+    console.log('req LOGOUT ::::::::::', req.session)
+    req.session = null
+    console.log('after regenerate req.session:', req.session)
+    res.send({isAdmin: false})
   })
 }

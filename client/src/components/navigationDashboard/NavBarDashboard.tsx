@@ -2,13 +2,13 @@ import {CSSObject} from '@emotion/react'
 
 import {LogoLinkStyles, LogoStyles, NavStyles} from '../navigation/NavBar'
 import {NavItem} from '../navigation/NavItem'
+import {LogoutButton} from '../login/LogoutButton'
 
 const LogoutStyles: CSSObject = {
   fontFamily: 'Raleway',
   fontSize: '1em',
   marginLeft: 'auto',
-  marginRight: '20px',
-  padding: '10px',
+  marginRight: '30px',
 }
 
 export const NavBarDashboard: React.FC = () => {
@@ -20,7 +20,7 @@ export const NavBarDashboard: React.FC = () => {
         </a>
         <NavItem linkHref='/dashboard/posts' linkText='Blog Posts' />
         <NavItem linkHref='/dashboard/edit-post' linkText='New Post' />
-        <div css={LogoutStyles}>Logout</div>
+        <LogoutButton />
       </ul>
     </nav>
   )

@@ -1,6 +1,7 @@
 import {MouseEventHandler, useContext, useState} from 'react'
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
+import {BsCapslockFill} from 'react-icons/bs'
 
 import {Button} from '../ui/Button'
 import {AdminUserContext} from '../../contexts/AdminUserContext'
@@ -31,15 +32,20 @@ const ButtonStyles: CSSObject = {
   marginTop: '24px',
 }
 
+const CapsLockStyles: CSSObject = {
+  height: '26px',
+  textAlign: 'right',
+  fontWeight: 'bold',
+}
+
 export const Login = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [isCapsLock, setIsCapsLock] = useState<boolean>(false)
-  const {state, dispatch} = useContext(AdminUserContext)
+  const {dispatch} = useContext(AdminUserContext)
 
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()
-    console.log('clicked submit')
     const res = await axios.post('/api/login', {
       data: {
         password,
@@ -48,7 +54,6 @@ export const Login = () => {
     })
 
     const isAdmin = res.data.isAdmin
-    console.log('isAdmin, typeof isAdmin:', isAdmin, typeof isAdmin)
 
     if (isAdmin) {
       dispatch({
@@ -56,14 +61,13 @@ export const Login = () => {
         payload: {isAdmin},
       })
     }
-    console.log('res:::::::', res)
   }
 
   return (
     <div css={PageStyles}>
       <form>
         <div css={InputWrapperStyles}>
-          <label css={InputStyles} htmlFor='username'>
+          <label css={InputStyles} htmlFor='username' aria-hidden='true'>
             Username
           </label>
           <input
@@ -77,7 +81,7 @@ export const Login = () => {
           />
         </div>
         <div css={InputWrapperStyles}>
-          <label css={InputStyles} htmlFor='password'>
+          <label css={InputStyles} htmlFor='password' aria-hidden='true'>
             Password
           </label>
           <input
@@ -88,13 +92,19 @@ export const Login = () => {
             placeholder='Enter Password'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            onKeyDown={(event) =>
-              console.log(
-                "event.getModifierState('CapsLock')",
-                event.getModifierState('CapsLock'),
-              )
-            }
+            onKeyDown={(event) => {
+              setIsCapsLock(event.getModifierState('CapsLock'))
+              console.log('isCapsLock', isCapsLock)
+            }}
           />
+        </div>
+        <div css={CapsLockStyles} role='alert'>
+          {isCapsLock && (
+            <span>
+              Oops! It looks like Caps Lock is on.{' '}
+              <BsCapslockFill aria-hidden='true' />
+            </span>
+          )}
         </div>
         <Button
           cssOverrides={ButtonStyles}

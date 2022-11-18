@@ -2,7 +2,7 @@ import {createContext, useReducer} from 'react'
 
 import {adminReducer, initialState} from '../reducers/reducer'
 
-type State = {
+export type State = {
   isAdmin: boolean
 }
 

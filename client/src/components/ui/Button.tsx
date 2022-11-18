@@ -3,12 +3,12 @@ import {CSSObject} from '@emotion/react'
 
 type Props = {
   buttonText: string
-  buttonStyle: 'Action' | 'Cancel'
+  buttonStyle: 'Action' | 'Cancel' | 'Link'
   cssOverrides?: CSSObject
   handleClick: MouseEventHandler<HTMLButtonElement>
 }
 
-const ButtonStyles = (buttonStyle: string): CSSObject => ({
+const CommonButtonStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -18,30 +18,60 @@ const ButtonStyles = (buttonStyle: string): CSSObject => ({
   width: 'fit-content',
   padding: '14px 20px',
   cursor: 'pointer',
-  color: `${buttonStyle === 'Action' ? 'white' : 'black'}`,
-  border: `${buttonStyle === 'Action' ? 'none' : '1px solid black'}`,
-  backgroundColor: `${buttonStyle === 'Action' ? 'green' : 'none'}`,
+}
+
+const ActionButtonStyles: CSSObject = {
+  color: 'white',
+  border: 'none',
+  backgroundColor: 'green',
   borderRadius: '4px',
   ['&:hover']: {
-    backgroundColor: `${buttonStyle === 'Action' ? 'darkGreen' : 'none'}`,
+    backgroundColor: 'darkGreen',
   },
-})
+}
+
+const CancelButtonStyles: CSSObject = {
+  color: 'black',
+  border: '1px solid black',
+  backgroundColor: 'none',
+  borderRadius: '4px',
+  ['&:hover']: {
+    backgroundColor: '#f7f7f7',
+  },
+}
+
+const LinkButtonStyles: CSSObject = {
+  color: 'black',
+  border: 'none',
+  background: 'none',
+  ['&:hover']: {
+    textDecoration: 'underline',
+  },
+}
+
+const ButtonStyles = (buttonStyle: string): CSSObject => {
+  switch (buttonStyle) {
+    case 'Action':
+      return {...CommonButtonStyles, ...ActionButtonStyles}
+    case 'Cancel':
+      return {...CommonButtonStyles, ...CancelButtonStyles}
+    case 'Link':
+    default:
+      return {...CommonButtonStyles, ...LinkButtonStyles}
+  }
+}
 
 export const Button: React.FC<Props> = ({
   buttonText,
   buttonStyle,
-  cssOverrides,
+  cssOverrides = {},
   handleClick,
 }) => {
-  let Styles
-  if (cssOverrides) {
-    Styles = {...ButtonStyles(buttonStyle), ...cssOverrides}
-  } else {
-    Styles = ButtonStyles(buttonStyle)
-  }
-
   return (
-    <button css={Styles} onClick={handleClick}>
+    <button
+      css={{...ButtonStyles(buttonStyle), ...cssOverrides}}
+      onClick={handleClick}
+    >
       {buttonText}
     </button>
   )
