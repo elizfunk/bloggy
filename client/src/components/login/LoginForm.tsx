@@ -4,8 +4,8 @@ import axios from 'axios'
 import {BsCapslock} from 'react-icons/bs'
 import {BiErrorCircle} from 'react-icons/bi'
 
-import {Button} from '../ui/Button'
-import {AdminUserContext} from '../../contexts/AdminUserContext'
+import {Button} from '@/components/ui/Button'
+import {AdminUserContext} from '@/contexts/AdminUserContext'
 
 const PageStyles: CSSObject = {
   display: 'flex',
