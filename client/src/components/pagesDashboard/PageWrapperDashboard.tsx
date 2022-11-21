@@ -1,4 +1,4 @@
-import {NavBarDashboard} from '../navigationDashboard/NavBarDashboard'
+import {NavBarDashboard} from '@/components/navigationDashboard/NavBarDashboard'
 
 type Props = {
   children: JSX.Element[] | JSX.Element

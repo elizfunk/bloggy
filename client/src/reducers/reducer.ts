@@ -1,4 +1,4 @@
-import {State} from '../contexts/AdminUserContext'
+import {State} from '@/contexts/AdminUserContext'
 
 type Action = {
   type: 'AUTHENTICATE_ADMIN' | 'LOGOUT_ADMIN'

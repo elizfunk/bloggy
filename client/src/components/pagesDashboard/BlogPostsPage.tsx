@@ -1,8 +1,8 @@
 import {useContext} from 'react'
 
-import {PageWrapperDashboard} from './PageWrapperDashboard'
-import {Login} from '../login/LoginForm'
-import {AdminUserContext} from '../../contexts/AdminUserContext'
+import {PageWrapperDashboard} from '@/components/pagesDashboard/PageWrapperDashboard'
+import {Login} from '@/components/login/LoginForm'
+import {AdminUserContext} from '@/contexts/AdminUserContext'
 
 export const BlogPostsPage: React.FC = () => {
   const {state, dispatch} = useContext(AdminUserContext)

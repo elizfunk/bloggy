@@ -2,8 +2,8 @@ import {MouseEventHandler, useContext} from 'react'
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
 
-import {Button} from '../ui/Button'
-import {AdminUserContext} from '../../contexts/AdminUserContext'
+import {Button} from '@/components/ui/Button'
+import {AdminUserContext} from '@/contexts/AdminUserContext'
 
 const LogoutStyles: CSSObject = {
   fontFamily: 'Raleway',

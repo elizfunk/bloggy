@@ -1,6 +1,10 @@
 import {CSSObject} from '@emotion/react'
 
-import {FOOTER_HEIGHT, NAV_HEIGHT, PageWrapperBlog} from './PageWrapperBlog'
+import {
+  FOOTER_HEIGHT,
+  NAV_HEIGHT,
+  PageWrapperBlog,
+} from '@/components/pages/PageWrapperBlog'
 
 const OutsideWrapperStyles: CSSObject = {
   width: '100%',

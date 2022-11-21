@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {CSSObject} from '@emotion/react'
 
-import {MenuButton} from './MenuButton'
-import {MenuItem} from './MenuItem'
-import {delayAndFocus} from '../../utils/delayAndFocus'
+import {MenuButton} from '@/components/navigation/MenuButton'
+import {MenuItem} from '@/components/navigation/MenuItem'
+import {delayAndFocus} from '@/utils/delayAndFocus'
 
 type MenuItems = {
   linkHref: string
