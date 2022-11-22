@@ -54,8 +54,6 @@ export const Login = () => {
   const [isLoginError, setIsLoginError] = useState<boolean>(false)
   const {dispatch} = useContext(AdminUserContext)
 
-  console.dir(document)
-
   const handleSubmit: MouseEventHandler<HTMLButtonElement> = async (event) => {
     event.preventDefault()
 
@@ -126,7 +124,6 @@ export const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
             onKeyDown={(event) => {
               setIsCapsLock(event.getModifierState('CapsLock'))
-              console.log('isCapsLock', isCapsLock)
             }}
           />
         </div>
