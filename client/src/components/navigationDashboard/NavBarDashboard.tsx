@@ -1,12 +1,12 @@
 import {CSSObject} from '@emotion/react'
 
+import {LogoutButton} from '@/components/login/LogoutButton'
 import {
   LogoLinkStyles,
   LogoStyles,
   NavStyles,
 } from '@/components/navigation/NavBar'
 import {NavItem} from '@/components/navigation/NavItem'
-import {LogoutButton} from '@/components/login/LogoutButton'
 
 const LogoutStyles: CSSObject = {
   fontFamily: 'Raleway',

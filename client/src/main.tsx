@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
-import {AdminUserProvider} from '@/contexts/AdminUserContext'
 import {AboutPage} from '@/components/pages/AboutPage'
 import {BlogPage} from '@/components/pages/BlogPage'
 import {HomePage} from '@/components/pages/HomePage'
-import {BlogPostsPage} from '@/components/pagesDashboard/BlogPostsPage'
 import {BlogPostEditorPage} from '@/components/pagesDashboard/BlogPostEditorPage'
+import {BlogPostsPage} from '@/components/pagesDashboard/BlogPostsPage'
+import {AdminUserProvider} from '@/contexts/AdminUserContext'
 
 const router = createBrowserRouter([
   {

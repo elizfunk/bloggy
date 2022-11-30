@@ -1,8 +1,8 @@
-import {MouseEventHandler, useContext, useState} from 'react'
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
-import {BsCapslock} from 'react-icons/bs'
+import {MouseEventHandler, useContext, useState} from 'react'
 import {BiErrorCircle} from 'react-icons/bi'
+import {BsCapslock} from 'react-icons/bs'
 
 import {Button} from '@/components/ui/Button'
 import {AdminUserContext} from '@/contexts/AdminUserContext'
@@ -22,6 +22,7 @@ const LoginErrorStyles: CSSObject = {
   width: '350px',
   marginBottom: '34px',
   fontWeight: 'bold',
+  textAlign: 'right',
 }
 
 const InputWrapperStyles: CSSObject = {

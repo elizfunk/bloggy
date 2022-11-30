@@ -1,5 +1,5 @@
-import {NavBar} from '@/components/navigation/NavBar'
 import {Footer} from '@/components/footer/Footer'
+import {NavBar} from '@/components/navigation/NavBar'
 
 export const NAV_HEIGHT = 64
 export const FOOTER_HEIGHT = 80

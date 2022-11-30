@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
 import {CSSObject} from '@emotion/react'
+import {Link} from 'react-router-dom'
 
 type Props = {
   linkHref: string

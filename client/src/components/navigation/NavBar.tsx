@@ -1,7 +1,7 @@
 import {CSSObject} from '@emotion/react'
 
-import {NavItem} from '@/components/navigation/NavItem'
 import {Menu} from '@/components/navigation/Menu'
+import {NavItem} from '@/components/navigation/NavItem'
 
 export const NavStyles: CSSObject = {
   height: '64px',

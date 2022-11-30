@@ -1,12 +1,11 @@
+import {CSSObject} from '@emotion/react'
 import {useContext} from 'react'
 
-import {CSSObject} from '@emotion/react'
-
 import Editor from '@/components/editor/Editor'
-import {PageWrapperDashboard} from '@/components/pagesDashboard/PageWrapperDashboard'
 import {Login} from '@/components/login/LoginForm'
-import {AdminUserContext} from '@/contexts/AdminUserContext'
+import {PageWrapperDashboard} from '@/components/pagesDashboard/PageWrapperDashboard'
 import {Button} from '@/components/ui/Button'
+import {AdminUserContext} from '@/contexts/AdminUserContext'
 
 const OutsideWrapperStyles: CSSObject = {
   display: 'flex',
@@ -28,7 +27,6 @@ export const BlogPostEditorPage = () => {
   const {state} = useContext(AdminUserContext)
 
   console.log('editor page state:', state)
-  console.dir(document)
 
   if (!state.isAdmin) {
     return <Login />

@@ -1,5 +1,5 @@
-import {MouseEventHandler} from 'react'
 import {CSSObject} from '@emotion/react'
+import {MouseEventHandler} from 'react'
 
 type Props = {
   buttonText: string
