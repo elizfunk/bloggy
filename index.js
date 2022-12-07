@@ -17,6 +17,7 @@ app.use(
 )
 
 require('./routes/authRoutes')(app)
+require('./routes/dashboardRoutes')(app)
 
 if (process.env.NODE_ENV === 'production') {
   // Serve up production assets like main.js and main.css
