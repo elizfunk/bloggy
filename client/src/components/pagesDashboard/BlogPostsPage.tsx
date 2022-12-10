@@ -1,10 +1,11 @@
 import {CSSObject} from '@emotion/react'
 import axios from 'axios'
-import {useContext, useEffect, useState} from 'react'
+import {ReactElement, useContext, useEffect, useState} from 'react'
 
 import {Login} from '@/components/login/LoginForm'
 import {PageWrapperDashboard} from '@/components/pagesDashboard/PageWrapperDashboard'
 import {AdminUserContext} from '@/contexts/AdminUserContext'
+import {Post} from '@/models/post'
 
 const OutsideWrapperStyles: CSSObject = {
   display: 'flex',
@@ -27,20 +28,13 @@ const ContainerStyles: CSSObject = {
 }
 
 // TODO: type API response
+// TODO: loading state
 export const BlogPostsPage: React.FC = () => {
   const {state, dispatch} = useContext(AdminUserContext)
   console.log('BlogPostsPage -- isAdmin:', state.isAdmin)
-  const [posts, setPosts] = useState<{}[]>([])
+  const [posts, setPosts] = useState<Post[]>([])
 
   useEffect(() => {
-    if (!state.isAdmin) {
-      // axios get request for session status isAdmin?
-      const checkIfLoggedIn = async () => {
-        const res = await axios.get('/api/loginstatus')
-        console.log('res for login status:', res)
-      }
-      checkIfLoggedIn()
-    }
     if (state.isAdmin) {
       const getPosts = async () => {
         const res = await axios.get('/api/dashboard/posts')
@@ -49,6 +43,18 @@ export const BlogPostsPage: React.FC = () => {
       }
 
       getPosts()
+    } else {
+      const checkIfLoggedIn = async () => {
+        const res = await axios.get('/api/loginstatus')
+        if (res?.data?.isAdmin) {
+          dispatch({
+            type: 'AUTHENTICATE_ADMIN',
+            payload: {isAdmin: true},
+          })
+        }
+        console.log('res for login status:', res)
+      }
+      checkIfLoggedIn()
     }
   }, [state])
 
@@ -63,7 +69,7 @@ export const BlogPostsPage: React.FC = () => {
           <h1>List of Blog Posts</h1>
           <>
             {posts.length &&
-              posts.map((item) => {
+              posts.map((item: Post): ReactElement | undefined => {
                 if (item.title) {
                   return <div key={item.post_id}>{item.title}</div>
                 }

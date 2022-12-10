@@ -2,8 +2,11 @@ const keys = require('../config/keys')
 
 module.exports = (app) => {
   app.get('/api/loginstatus', (req, res) => {
-    console.log('req for loginstatus:::::::::::::', req)
-    res.send(req.session)
+    if (req.session.user.id === keys.dashboardAdminUsername) {
+      res.send({isAdmin: true})
+    } else {
+      res.send({isAdmin: false})
+    }
   })
 
   app.post('/api/login', (req, res) => {
