@@ -5,6 +5,7 @@ import {BiErrorCircle} from 'react-icons/bi'
 import {BsCapslock} from 'react-icons/bs'
 
 import {Button} from '@/components/ui/Button'
+import {TextInputField} from '@/components/ui/forms/TextInputField'
 import {AdminUserContext} from '@/contexts/AdminUserContext'
 
 const PageStyles: CSSObject = {
@@ -103,13 +104,12 @@ export const Login = () => {
           <label css={InputStyles} htmlFor='username'>
             Username
           </label>
-          <input
-            css={InputStyles}
+          <TextInputField
             type='text'
             name='username'
             id='username'
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            handleChange={(event) => setUsername(event.target.value)}
           />
         </div>
         <div css={InputWrapperStyles}>

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon index.js"
   },
   "author": "Elizabeth S. Funk",
   "license": "ISC",
@@ -17,6 +16,7 @@
     "express": "^4.18.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20"
   }

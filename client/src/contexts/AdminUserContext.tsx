@@ -1,5 +1,5 @@
 import {adminReducer, initialState} from '@/reducers/reducer'
-import {createContext, useReducer} from 'react'
+import {createContext, Dispatch, useReducer} from 'react'
 
 export type State = {
   isAdmin: boolean
@@ -7,7 +7,7 @@ export type State = {
 
 export type AdminUserContextValues = {
   state: State
-  dispatch: React.Dispatch<any>
+  dispatch: Dispatch<any>
 }
 
 export const AdminUserContext = createContext<AdminUserContextValues>({

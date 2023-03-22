@@ -1,11 +1,12 @@
 import {CSSObject} from '@emotion/react'
-import {useContext} from 'react'
+import axios from 'axios'
+import {useContext, useEffect} from 'react'
 
 import Editor from '@/components/editor/Editor'
 import {Login} from '@/components/login/LoginForm'
 import {PageWrapperDashboard} from '@/components/pagesDashboard/PageWrapperDashboard'
-import {Button} from '@/components/ui/Button'
 import {AdminUserContext} from '@/contexts/AdminUserContext'
+import {BlogPostEditorPageProvider} from '@/contexts/BlogPostEditorPageContext'
 
 const OutsideWrapperStyles: CSSObject = {
   display: 'flex',
@@ -18,15 +19,29 @@ const OutsideWrapperStyles: CSSObject = {
   padding: '20px',
 }
 
-const ButtonWrapper: CSSObject = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-}
-
 export const BlogPostEditorPage = () => {
-  const {state} = useContext(AdminUserContext)
+  const {state, dispatch} = useContext(AdminUserContext)
 
-  console.log('editor page state:', state)
+  // TODO: Add loading state (otherwise the login flickers)
+  // TODO: Ensure that cookie expires and page logs out after 24 hours or sooner
+
+  // console.log('editor page state:', state)
+
+  useEffect(() => {
+    if (!state.isAdmin) {
+      const checkIfLoggedIn = async () => {
+        const res = await axios.get('/api/loginstatus')
+        if (res?.data?.isAdmin) {
+          dispatch({
+            type: 'AUTHENTICATE_ADMIN',
+            payload: {isAdmin: true},
+          })
+        }
+        // console.log('res for login status:', res)
+      }
+      checkIfLoggedIn()
+    }
+  }, [state])
 
   if (!state.isAdmin) {
     return <Login />
@@ -35,19 +50,9 @@ export const BlogPostEditorPage = () => {
   return (
     <PageWrapperDashboard>
       <div css={OutsideWrapperStyles}>
-        <div>
-          <h1>Title</h1>
+        <BlogPostEditorPageProvider>
           <Editor />
-          <div css={ButtonWrapper}>
-            <Button
-              buttonText='Save Changes'
-              buttonStyle='Action'
-              handleClick={() => {
-                console.log('clicked Save Changes')
-              }}
-            />
-          </div>
-        </div>
+        </BlogPostEditorPageProvider>
       </div>
     </PageWrapperDashboard>
   )

@@ -1,3 +1,4 @@
+import {CSSObject} from '@emotion/react'
 import {CodeHighlightNode, CodeNode} from '@lexical/code'
 import {AutoLinkNode, LinkNode} from '@lexical/link'
 import {ListItemNode, ListNode} from '@lexical/list'
@@ -15,6 +16,8 @@ import {HeadingNode, QuoteNode} from '@lexical/rich-text'
 import {TableCellNode, TableNode, TableRowNode} from '@lexical/table'
 import {$getRoot, $getSelection, EditorState} from 'lexical'
 
+import {EditorButton} from '@/components/editor/EditorButton'
+import {EditorMetadataForm} from '@/components/editor/EditorMetadataForm'
 import {EditorTheme} from '@/components/editor/EditorTheme'
 import AutoLinkPlugin from '@/components/editor/plugins/AutoLinkPlugin'
 import CodeHighlightPlugin from '@/components/editor/plugins/CodeHighlightPlugin'
@@ -22,6 +25,16 @@ import {ListMaxIndentLevelPlugin} from '@/components/editor/plugins/ListMaxInden
 import ToolbarPlugin from '@/components/editor/plugins/ToolbarPlugin'
 import TreeViewPlugin from '@/components/editor/plugins/TreeViewPlugin'
 import '@/components/editor/styles.css'
+
+const FormWrapper: CSSObject = {
+  maxWidth: '600px',
+  margin: '20px auto',
+}
+
+const ButtonWrapper: CSSObject = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+}
 
 function Placeholder() {
   return <div className='editor-placeholder'>Enter some rich text...</div>
@@ -53,21 +66,29 @@ const editorConfig = {
 
 export default function Editor() {
   // TODO: move function to external file -- it's not dependent on values from this component
+  // also lexical shows example of useRef for capturing changing editor state
   const onChange = (editorState: EditorState) => {
+    // lexical documentation suggests using JSON.stringify(editorState) for persisting data
     console.log('JSON.stringify(editorState):', JSON.stringify(editorState))
-    console.log('editorState:', editorState)
+    // console.log('editorState:', editorState)
     console.log('editorState.toJSON()', editorState.toJSON())
+
     editorState.read(() => {
       const root = $getRoot()
       const selection = $getSelection()
 
+      const topLevelChildren = root.getChildren()
       console.log({root, selection})
+      console.log({topLevelChildren})
+
       console.log('root.exportJSON:', root.exportJSON())
-      console.log('root.getTextContent:', root.getTextContent())
     })
   }
   return (
     <LexicalComposer initialConfig={editorConfig}>
+      <div css={FormWrapper}>
+        <EditorMetadataForm />
+      </div>
       <div className='editor-container'>
         <ToolbarPlugin />
         <div className='editor-inner'>
@@ -85,6 +106,9 @@ export default function Editor() {
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
           <OnChangePlugin onChange={onChange} />
+        </div>
+        <div css={ButtonWrapper}>
+          <EditorButton />
         </div>
       </div>
     </LexicalComposer>
